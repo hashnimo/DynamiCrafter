@@ -2,16 +2,16 @@ version="1024" ##1024, 512, 256
 seed=123
 name=dynamicrafter_1024_seed${seed}
 
-ckpt=/content/DynamiCrafter/checkpoints/dynamicrafter_1024_v1/model.ckpt
-config=/content/DynamiCrafter/configs/inference_1024_v1.0.yaml
+ckpt=/kaggle/working/DynamiCrafter/checkpoints/dynamicrafter_1024_v1/model.ckpt
+config=/kaggle/working/DynamiCrafter/configs/inference_1024_v1.0.yaml
 
-prompt_dir=/content/DynamiCrafter/prompts/1024
-res_dir=/content/DynamiCrafter/results
+prompt_dir=/kaggle/working/DynamiCrafter/prompts/1024
+res_dir=/kaggle/working/DynamiCrafter/results
 
 H=576
 FS=10 ## This model adopts FPS=10, range recommended: 15-5 (smaller value -> larger motion)
 
-CUDA_VISIBLE_DEVICES=0 python3 /content/DynamiCrafter/scripts/evaluation/inference.py \
+CUDA_VISIBLE_DEVICES=0 python3 /kaggle/working/DynamiCrafter/scripts/evaluation/inference.py \
 --seed ${seed} \
 --ckpt_path $ckpt \
 --config $config \
