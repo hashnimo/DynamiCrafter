@@ -1,4 +1,4 @@
-version=${version} #1024, ${version}, 256
+version=512 #1024, ${version}, 256
 seed=123
 name=dynamicrafter_${version}_seed${seed}
 
