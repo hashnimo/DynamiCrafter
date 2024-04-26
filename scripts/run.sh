@@ -1,4 +1,4 @@
-version="512" ##512, 512, 256
+version="512" #1024, 512, 256
 seed=123
 name=dynamicrafter_512_seed${seed}
 
@@ -9,7 +9,7 @@ prompt_dir=/kaggle/working/DynamiCrafter/prompts/512
 res_dir=/kaggle/working/DynamiCrafter/results
 
 H=576
-FS=10 ## This model adopts FPS=10, range recommended: 15-5 (smaller value -> larger motion)
+FS=20 ## This model adopts FPS=10, range recommended: 15-5 (smaller value -> larger motion)
 
 CUDA_VISIBLE_DEVICES=0 python3 /kaggle/working/DynamiCrafter/scripts/evaluation/inference.py \
 --seed ${seed} \
