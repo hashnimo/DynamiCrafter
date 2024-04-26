@@ -1,13 +1,11 @@
-version="512" #1024, 512, 256
+version=${version} #1024, ${version}, 256
 seed=123
-name=dynamicrafter_512_seed${seed}
+name=dynamicrafter_${version}_seed${seed}
 
-ckpt=/kaggle/working/DynamiCrafter/checkpoints/dynamicrafter_512_v1/model.ckpt
-config=/kaggle/working/DynamiCrafter/configs/inference_512_v1.0.yaml
+ckpt=/kaggle/working/DynamiCrafter/checkpoints/dynamicrafter_${version}_v1/model.ckpt
+config=/kaggle/working/DynamiCrafter/configs/inference_${version}_v1.0.yaml
 
-input_name=$(basename /kaggle/input/*)
-
-prompt_dir=/kaggle/input/$input_name
+prompt_dir=/kaggle/working/DynamiCrafter/prompts/${version}
 res_dir=/kaggle/working/DynamiCrafter/results
 
 H=320
@@ -19,7 +17,7 @@ CUDA_VISIBLE_DEVICES=0 python3 /kaggle/working/DynamiCrafter/scripts/evaluation/
 --config $config \
 --savedir $res_dir/$name \
 --n_samples 1 \
---bs 1 --height ${H} --width 512 \
+--bs 1 --height ${H} --width ${version} \
 --unconditional_guidance_scale 7.5 \
 --ddim_steps 50 \
 --ddim_eta 1.0 \
