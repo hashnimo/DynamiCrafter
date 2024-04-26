@@ -11,7 +11,7 @@ prompt_dir=/kaggle/input/$input_name
 res_dir=/kaggle/working/DynamiCrafter/results
 
 H=576
-FS=20 ## This model adopts FPS=10, range recommended: 15-5 (smaller value -> larger motion)
+FS=10 ## This model adopts FPS=10, range recommended: 15-5 (smaller value -> larger motion)
 
 CUDA_VISIBLE_DEVICES=0 python3 /kaggle/working/DynamiCrafter/scripts/evaluation/inference.py \
 --seed ${seed} \
