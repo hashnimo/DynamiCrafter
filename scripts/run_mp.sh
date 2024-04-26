@@ -3,11 +3,11 @@ seed=123
 
 name=dynamicrafter_1024_mp_seed${seed}
 
-ckpt=/kaggle/working/checkpoints/dynamicrafter_1024_v1/model.ckpt
-config=/kaggle/working/configs/inference_1024_v1.0.yaml
+ckpt=/kaggle/working/DynamiCrafter/checkpoints/dynamicrafter_1024_v1/model.ckpt
+config=/kaggle/working/DynamiCrafter/configs/inference_1024_v1.0.yaml
 
-prompt_dir=/kaggle/working/prompts/1024/
-res_dir=/kaggle/working/results
+prompt_dir=/kaggle/working/DynamiCrafter/prompts/1024/
+res_dir=/kaggle/working/DynamiCrafter/results
 
 H=576
 FS=10 ## This model adopts FPS=10
