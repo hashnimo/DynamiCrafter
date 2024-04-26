@@ -10,8 +10,8 @@ input_name=$(basename /kaggle/input/*)
 prompt_dir=/kaggle/input/$input_name
 res_dir=/kaggle/working/DynamiCrafter/results
 
-H=576
-FS=10 ## This model adopts FPS=10, range recommended: 15-5 (smaller value -> larger motion)
+H=320
+FS=24 ## This model adopts FPS=24, range recommended: 15-30 (smaller value -> larger motion)
 
 CUDA_VISIBLE_DEVICES=0 python3 /kaggle/working/DynamiCrafter/scripts/evaluation/inference.py \
 --seed ${seed} \
@@ -28,7 +28,3 @@ CUDA_VISIBLE_DEVICES=0 python3 /kaggle/working/DynamiCrafter/scripts/evaluation/
 --video_length 16 \
 --frame_stride ${FS} \
 --timestep_spacing 'uniform_trailing' --guidance_rescale 0.7 --perframe_ae
-
-## multi-cond CFG: the <unconditional_guidance_scale> is s_txt, <cfg_img> is s_img
-#--multiple_cond_cfg --cfg_img 7.5
-#--loop
