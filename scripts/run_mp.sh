@@ -1,36 +1,25 @@
-version=$1 ##1024, 512, 256
+version=1024 ##1024, 512, 256
 seed=123
 
-name=dynamicrafter_$1_mp_seed${seed}
+name=dynamicrafter_1024_mp_seed${seed}
 
-ckpt=checkpoints/dynamicrafter_$1_v1/model.ckpt
-config=configs/inference_$1_v1.0.yaml
+ckpt=/kaggle/working/checkpoints/dynamicrafter_1024_v1/model.ckpt
+config=/kaggle/working/configs/inference_1024_v1.0.yaml
 
-prompt_dir=prompts/$1/
-res_dir="results"
+prompt_dir=/kaggle/working/prompts/1024/
+res_dir=/kaggle/working/results
 
-if [ "$1" == "256" ]; then
-    H=256
-    FS=3  ## This model adopts frame stride=3
-elif [ "$1" == "512" ]; then
-    H=320
-    FS=24 ## This model adopts FPS=24
-elif [ "$1" == "1024" ]; then
-    H=576
-    FS=10 ## This model adopts FPS=10
-else
-    echo "Invalid input. Please enter 256, 512, or 1024."
-    exit 1
-fi
+H=576
+FS=10 ## This model adopts FPS=10
 
-# if [ "$1" == "256" ]; then
+# if [ "1024" == "256" ]; then
 # CUDA_VISIBLE_DEVICES=2 python3 scripts/evaluation/inference.py \
 # --seed 123 \
 # --ckpt_path $ckpt \
 # --config $config \
 # --savedir $res_dir/$name \
 # --n_samples 1 \
-# --bs 1 --height ${H} --width $1 \
+# --bs 1 --height ${H} --width 1024 \
 # --unconditional_guidance_scale 7.5 \
 # --ddim_steps 50 \
 # --ddim_eta 1.0 \
@@ -45,7 +34,7 @@ fi
 # --config $config \
 # --savedir $res_dir/$name \
 # --n_samples 1 \
-# --bs 1 --height ${H} --width $1 \
+# --bs 1 --height ${H} --width 1024 \
 # --unconditional_guidance_scale 7.5 \
 # --ddim_steps 50 \
 # --ddim_eta 1.0 \
@@ -62,7 +51,7 @@ fi
 #--loop
 
 ## inference using single node with multi-GPUs:
-if [ "$1" == "256" ]; then
+if [ "1024" == "256" ]; then
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python3 -m torch.distributed.launch \
 --nproc_per_node=8 --nnodes=1 --master_addr=127.0.0.1 --master_port=23456 --node_rank=0 \
 scripts/evaluation/ddp_wrapper.py \
@@ -72,7 +61,7 @@ scripts/evaluation/ddp_wrapper.py \
 --config $config \
 --savedir $res_dir/$name \
 --n_samples 1 \
---bs 1 --height ${H} --width $1 \
+--bs 1 --height ${H} --width 1024 \
 --unconditional_guidance_scale 7.5 \
 --ddim_steps 50 \
 --ddim_eta 1.0 \
@@ -90,7 +79,7 @@ scripts/evaluation/ddp_wrapper.py \
 --config $config \
 --savedir $res_dir/$name \
 --n_samples 1 \
---bs 1 --height ${H} --width $1 \
+--bs 1 --height ${H} --width 1024 \
 --unconditional_guidance_scale 7.5 \
 --ddim_steps 50 \
 --ddim_eta 1.0 \
