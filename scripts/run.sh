@@ -5,7 +5,7 @@ name=dynamicrafter_512_seed${seed}
 ckpt=/kaggle/working/DynamiCrafter/checkpoints/dynamicrafter_512_v1/model.ckpt
 config=/kaggle/working/DynamiCrafter/configs/inference_512_v1.0.yaml
 
-prompt_dir=/kaggle/working/DynamiCrafter/prompts/512
+prompt_dir=$input
 res_dir=/kaggle/working/DynamiCrafter/results
 
 H=576
