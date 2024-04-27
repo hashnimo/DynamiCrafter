@@ -25,4 +25,4 @@ CUDA_VISIBLE_DEVICES=0 python3 /kaggle/working/DynamiCrafter/scripts/evaluation/
 --text_input \
 --video_length 16 \
 --frame_stride ${FS} \
---timestep_spacing 'uniform_trailing' --guidance_rescale 0.7 --perframe_ae=True
+--timestep_spacing 'uniform_trailing' --guidance_rescale 0.7 --perframe_ae
